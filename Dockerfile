@@ -1,4 +1,4 @@
-FROM jre:8
+FROM java:8
 VOLUME /tmp
 COPY target/gs-spring-boot-0.1.0.jar app.jar
 RUN bash -c 'touch /app.jar'
