@@ -1,5 +1,6 @@
 package hello;
 
+import java.net.InetAddress;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,8 +17,9 @@ public class HelloController {
     }
 
     @RequestMapping("/h")
-    public String host() {
-        return "Greetings from Spring Boot!"+hostname;
+    public String host() throws Exception {
+        InetAddress address = InetAddress.getLocalHost();
+        return "Greetings from Spring Boot!"+address.getHostAddress();
     }
 
     
