@@ -21,6 +21,10 @@ public class HelloController {
         InetAddress address = InetAddress.getLocalHost();
         return "Greetings from Spring Boot!"+address.getHostAddress();
     }
+    @RequestMapping("/a")
+    public String echo() throws Exception {
+        return "Greetings from Spring Boot!"+hostname;
+    }
 
     
 }
