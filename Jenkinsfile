@@ -14,7 +14,7 @@ node('slave001') {
     }
     stage('Build') {
         echo "3.Build Docker Image Stage"
-        #sh "docker build -t docker.sz-shuwei.com/gs-spring-boot:${build_tag} ."
+        // sh "docker build -t docker.sz-shuwei.com/gs-spring-boot:${build_tag} ."
         sh "mvn package"
     }
     stage('Push') {
