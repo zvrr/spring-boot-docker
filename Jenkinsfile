@@ -20,6 +20,7 @@ node('slave001') {
     stage('Push') {
         echo "4.Deploy jar and Push Docker Image Stage"
         sh "mvn deploy -Dmaven.test.skip=true"
+        sh "docker tag docker.sz-shuwei.com/gs-spring-boot:latest docker.sz-shuwei.com/gs-spring-boot:${build_tag}" 
         withCredentials([usernamePassword(credentialsId: 'docker-register-sz-shuwei', passwordVariable: 'dockerPassword', usernameVariable: 'dockerUser')]) {
             sh "docker login -u ${dockerUser} -p ${dockerPassword} docker.sz-shuwei.com"
             sh "docker push docker.sz-shuwei.com/gs-spring-boot:${build_tag}"
