@@ -15,7 +15,7 @@ node('slave001') {
     stage('Build') {
         echo "3.Build Docker Image Stage"
         // sh "docker build -t docker.sz-shuwei.com/gs-spring-boot:${build_tag} ."
-        sh "mvn package"
+        sh "mvn package -Dmaven.test.skip=true"
     }
     stage('Push') {
         echo "4.Deploy jar and Push Docker Image Stage"
