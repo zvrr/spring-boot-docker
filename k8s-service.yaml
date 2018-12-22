@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    service.beta.kubernetes.io/alicloud-loadbalancer-address-type: intranet
+  name: springboot-demo-api-v2
+  namespace: default
+spec:
+  externalTrafficPolicy: Cluster
+  ports:
+    - nodePort: 31211
+      port: 8082
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: bigdata-springboot-docker-demo-v2
+  sessionAffinity: None
+  type: LoadBalancer
+
